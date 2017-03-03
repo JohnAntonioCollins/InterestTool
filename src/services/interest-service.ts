@@ -21,8 +21,8 @@ export class InterestService {
             "overDraftPenalty": overDraftPenalty,
             "requiredMinimumBalance": requiredMinimumBalance,
             "isMinimumBalanceRequired": isMinimumBalanceRequired,
-            "recurringTransactions": null,
-            "accountHistory": null
+            "recurringTransactions": recurringTransactions,
+            "accountHistory": accountHistory
         };
        console.log(this.data);
 

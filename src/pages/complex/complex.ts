@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the Complex page.
@@ -13,10 +13,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ComplexPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComplexPage');
+  }
+
+     doAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Interest Calculated',
+      message: 'We calculated an interest of 443493 pennies',
+      buttons: ['Ok']
+    });
+    alert.present()
   }
 
 }

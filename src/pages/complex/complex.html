@@ -25,12 +25,12 @@
    </ion-item>
 
      <ion-item *ngIf="complexInterest">
-    <ion-label color="primary">Compunding frequency?</ion-label>
+    <ion-label color="primary">Compounding frequency?</ion-label>
     <ion-input placeholder="30"></ion-input>
    </ion-item>
 
     </ion-list>
 
-    <button ion-button color="blue">Submit</button>
+    <button ion-button color="blue" (click)="doAlert()">Submit</button>
 
 </ion-content>

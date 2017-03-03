@@ -26,7 +26,7 @@
   </ion-item>
 
     <ion-item>
-    <ion-label color="primary">Interest Rate</ion-label>
+    <ion-label color="primary">Interest rate</ion-label>
     <ion-input placeholder="0.08"></ion-input>
    </ion-item>
 
@@ -67,7 +67,7 @@
     </ion-item>
     
     <ion-item *ngIf="recurringPaymentsExist">
-    <ion-label color="primary">Payment mount</ion-label>
+    <ion-label color="primary">Payment amount</ion-label>
     <ion-input placeholder="2000"></ion-input>
     </ion-item>
 
@@ -80,7 +80,7 @@
     </ion-item>
 
         <ion-item>
-    <ion-label *ngIf="accountHistoryExists" color="primary">What balance calculation rule should be applied?</ion-label>
+    <ion-label *ngIf="accountHistoryExists" color="primary">Balance calculation rule?</ion-label>
     <ion-select [(ngModel)]="method" *ngIf="accountHistoryExists" placeholder="Time of credit">
       <ion-option value="timeOfCredit">Time of credit</ion-option>
       <ion-option value="exInterestDate">Ex-interest date</ion-option>
@@ -111,6 +111,6 @@
 
     </ion-list>
     
-    <button ion-button color="blue">Submit</button>
+    <button ion-button color="blue" (click)="doAlert()">Submit</button>
 
 </ion-content>

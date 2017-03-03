@@ -8,7 +8,7 @@ export class InterestService {
     private responseData: any;
     private id:any;
     private interestValue: any;
-    private url: string = "http://127.0.0.1:8080/interestCalculator";
+    private url: string;
 
     constructor(private http: Http) {}
 
@@ -24,8 +24,10 @@ export class InterestService {
             "recurringTransactions": null,
             "accountHistory": null
         };
+       console.log(this.data);
 
-        this.http.post(this.url, this.data).subscribe(response => {
+       this.url = "http://127.0.0.1:8080/createAccount"
+       this.http.post(this.url, this.data).subscribe(response => {
             this.responseData = response.json();
             console.log(this.responseData);
             this.id = this.responseData.id;
@@ -34,18 +36,20 @@ export class InterestService {
 
     getInterestValue(id:any, interval:number, frequency:number,interestType:number, calculationRule:number, numDaysForRule:number) {
         this.data = {
-            "id": id,
+            "accountID": id,
             "interval": interval,
             "frequency": frequency,
             "interestType": interestType,
             "calculationRule": calculationRule,
             "numDaysForRule": numDaysForRule
         };
-        
+        console.log(this.data);
+
+        this.url = "http://127.0.0.1:8080/interestCalculator"
         this.http.post(this.url, this.data).subscribe(response => {
             this.responseData = response.json();
             console.log(this.responseData);
-            this.interestValue = this.responseData.interestValue;
+            this.interestValue = this.responseData.interestAmount;
         });
     }
 }

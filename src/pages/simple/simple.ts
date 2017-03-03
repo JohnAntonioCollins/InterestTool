@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the Simple page.
@@ -13,7 +13,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SimplePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SimplePage');

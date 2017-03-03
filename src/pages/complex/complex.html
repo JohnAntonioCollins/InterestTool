@@ -23,12 +23,12 @@
 
   <ion-item>
     <ion-label color="primary">Interval of calculation</ion-label>
-    <ion-input placeholder="365"></ion-input>
+    <ion-input type="text" [(ngModel)]="interval" placeholder="365"></ion-input>
    </ion-item>
 
      <ion-item *ngIf="complexInterest">
     <ion-label color="primary">Compounding frequency?</ion-label>
-    <ion-input placeholder="30"></ion-input>
+    <ion-input type="text" [(ngModel)]="frequency" placeholder="30"></ion-input>
    </ion-item>
 
     </ion-list>

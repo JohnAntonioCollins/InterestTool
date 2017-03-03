@@ -13,7 +13,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 })
 export class ComplexPage {
 
-accountID:number = 27;
+accountID:number;
 interval:number = 365;
 frequency:number = 12;
 interestType:any = "SIMPLE";

@@ -3,6 +3,7 @@ import { HomePage } from '../home/home';
 import { SimplePage } from '../simple/simple';
 import { ComplexPage } from '../complex/complex';
 
+
 @Component({
   templateUrl: 'tabs.html'
 })

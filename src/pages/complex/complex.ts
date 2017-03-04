@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { InterestService } from '../../services/interest-service';
 
 /*
   Generated class for the Complex page.
@@ -22,7 +23,7 @@ numDaysForRule:number = 0;
 checked:boolean;
 complexInterest:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController ) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public interestService:InterestService) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComplexPage');
@@ -37,8 +38,13 @@ complexInterest:any;
     alert.present()
   }
   getInterestValue(){
-    if(this.complexInterest){this.interestType="COMPLEX";}else{this.interestType="SIMPLE";}
-    console.log(this.accountID, this.interval, this.frequency, this.interestType, this.calculationRule, this.numDaysForRule, );
+    if(this.complexInterest){
+      this.interestType="COMPLEX";
+    }else{
+      this.interestType="SIMPLE";
+    }
+    console.log(this.accountID, this.interval, this.frequency, this.interestType, this.calculationRule.toUpperCase(), this.numDaysForRule);
+    this.interestService.getInterestValue(this.accountID, this.interval, this.frequency, this.interestType, this.calculationRule.toUpperCase(), this.numDaysForRule);
   }
   updateInterestType(){
     this.interestType="COMPLEX";

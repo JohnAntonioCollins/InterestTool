@@ -11,7 +11,6 @@
 
     <ion-item>
     <ion-label color="primary">Would you like to calculate complex interest?</ion-label>
-    <!---<ion-toggle [(ngModel)]="complexInterest"></ion-toggle>-->
     <ion-toggle [(ngModel)]="complexInterest" (ionChange)="updateInterestType()" checked="false">  </ion-toggle>
 
     </ion-item>
@@ -20,6 +19,7 @@
     <ion-label color="primary">Account ID</ion-label>
     <ion-input type="text" [(ngModel)]="accountID" placeholder="1277421"></ion-input>
   </ion-item>
+
 
   <ion-item>
     <ion-label color="primary">Interval of calculation</ion-label>

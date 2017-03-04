@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { InterestService } from '../../services/interest-service';
+
 
 /*
   Generated class for the Simple page.
@@ -12,8 +14,19 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
   templateUrl: 'simple.html'
 })
 export class SimplePage {
+  accountType:any;
+  balance:number;
+  interestRate:number;
+  overDraftPenalty:number;
+  requiredMinimumBalance:any;
+  isMinimumBalanceRequired:boolean;
+  recurringTransactions:any;
+  accountHistory:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
+  transactionFrequency:any;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public interestService:InterestService) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SimplePage');
@@ -27,5 +40,16 @@ export class SimplePage {
     });
     alert.present()
   }
+  postAccount(){
+    //set to 'null' as per middleware's spec, remove after build out
+    this.recurringTransactions="null";
+    this.accountHistory="null";
+    console.log(
+    this.accountType, this.balance, this.interestRate, this.overDraftPenalty, this.requiredMinimumBalance, this.isMinimumBalanceRequired, this.recurringTransactions, this.accountHistory)
+  }
+  updateIsMinimumBalanceRequired(){}
 
+  updateRecurringTransactions(){}
+
+  updateHasAccountHistory(){}
 }

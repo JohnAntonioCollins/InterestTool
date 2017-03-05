@@ -15,13 +15,13 @@ import { InterestService } from '../../services/interest-service';
 })
 export class SimplePage {
   accountType:any;
-  balance:number;
+  balance:any;
   interestRate:number;
   overDraftPenalty:number;
   requiredMinimumBalance:any;
   isMinimumBalanceRequired:boolean;
-  recurringTransactions:any;
-  accountHistory:any;
+  recurringTransactions:String[];
+  accountHistory:String[];
 
   transactionFrequency:any;
 
@@ -42,10 +42,12 @@ export class SimplePage {
   }
   postAccount(){
     //set to 'null' as per middleware's spec, remove after build out
-    this.recurringTransactions="null";
-    this.accountHistory="null";
+    //this.recurringTransactions="null";
+    //this.accountHistory="null";
     console.log(
     this.accountType, this.balance, this.interestRate, this.overDraftPenalty, this.requiredMinimumBalance, this.isMinimumBalanceRequired, this.recurringTransactions, this.accountHistory)
+
+    this.interestService.postAccount(this.accountType, this.balance, this.interestRate, this.overDraftPenalty, this.requiredMinimumBalance, this.isMinimumBalanceRequired, this.recurringTransactions["null"], this.accountHistory["null"]);
   }
   updateIsMinimumBalanceRequired(){}
 

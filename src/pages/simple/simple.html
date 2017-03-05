@@ -61,19 +61,19 @@
 
     <ion-item>
     <ion-label color="primary">Are there recurring transactions?</ion-label>
-    <ion-toggle [(ngModel)]="recurringTransactions" (ionChange)="updateRecurringTransactions()"
+    <ion-toggle [(ngModel)]="hasRecurringTransactions" (ionChange)="updateRecurringTransactions()"
  checked="true"></ion-toggle>
     </ion-item>
         
     <!-- does middleware need this info? it's not in their spec' -->
-    <ion-item *ngIf="recurringTransactions">
+    <ion-item *ngIf="hasRecurringTransactions">
     <ion-label color="primary">Transaction frequency</ion-label>
     <ion-input type="text" [(ngModel)]="transactionFrequency" placeholder="365"></ion-input>
     </ion-item>
     
     <!-- does middleware need this info? what's middleware's term for this? -->
-    <ion-item *ngIf="recurringPaymentsExist">
-    <ion-label color="primary">Payment amount</ion-label>
+    <ion-item *ngIf="hasRecurringTransactions">
+    <ion-label color="primary">Transaction amount</ion-label>
     <ion-input type="text" placeholder="2000"></ion-input>
     </ion-item>
 
@@ -101,20 +101,20 @@
    </ion-item>
    -->
 
-    <ion-item *ngIf="accountHistoryExists">
+    <ion-item *ngIf="hasAccountHistory">
     <ion-label color="primary">Amount</ion-label>
     <ion-input placeholder="2000"></ion-input>
     </ion-item>
 
-   <ion-item *ngIf="accountHistoryExists">
+   <ion-item *ngIf="hasAccountHistory">
    <ion-label color="primary">Date</ion-label>
    <ion-datetime displayFormat="MM/DD/YYYY" placeholder="11/19/1993"></ion-datetime>
    </ion-item>
 
-          <ion-item *ngIf="accountHistoryExists">
+          <ion-item *ngIf="hasAccountHistory">
        <ion-item *ngIf="method === 'thresholdMax' || method === 'thresholdMin'">
-     <ion-label *ngIf="accountHistoryExists" color="primary">How many days?</ion-label>
-    <ion-input *ngIf="accountHistoryExists" placeholder="4"></ion-input>
+     <ion-label *ngIf="hasAccountHistory" color="primary">How many days?</ion-label>
+    <ion-input *ngIf="hasAccountHistory" placeholder="4"></ion-input>
     </ion-item>
     </ion-item>
 

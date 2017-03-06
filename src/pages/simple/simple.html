@@ -68,13 +68,13 @@
     <!-- does middleware need this info? it's not in their spec' -->
     <ion-item *ngIf="recurringTransactions">
     <ion-label color="primary">Transaction frequency</ion-label>
-    <ion-input type="text" [(ngModel)]="transactionFrequency" placeholder="365"></ion-input>
+    <ion-input type="text" [(ngModel)]="transaction.frequency" placeholder="365"></ion-input>
     </ion-item>
     
     <!-- does middleware need this info? what's middleware's term for this? -->
-    <ion-item *ngIf="recurringPaymentsExist">
+    <ion-item *ngIf="recurringTransactions">
     <ion-label color="primary">Payment amount</ion-label>
-    <ion-input type="text" placeholder="2000"></ion-input>
+    <ion-input type="text" [(ngModel)]="transaction.amount" placeholder="2000"></ion-input>
     </ion-item>
 
     </ion-list>
@@ -101,12 +101,12 @@
    </ion-item>
    -->
 
-    <ion-item *ngIf="accountHistoryExists">
+    <ion-item *ngIf="hasAccountHistory">
     <ion-label color="primary">Amount</ion-label>
     <ion-input placeholder="2000"></ion-input>
     </ion-item>
 
-   <ion-item *ngIf="accountHistoryExists">
+   <ion-item *ngIf="hasAccountHistory">
    <ion-label color="primary">Date</ion-label>
    <ion-datetime displayFormat="MM/DD/YYYY" placeholder="11/19/1993"></ion-datetime>
    </ion-item>
@@ -119,6 +119,5 @@
     </ion-item>
 
     </ion-list>
-    
-    <button ion-button color="blue" (click)="postAccount()">Submit</button>
+  <button ion-button color="blue" (click)="postAccount()">Submit</button>
 </ion-content>

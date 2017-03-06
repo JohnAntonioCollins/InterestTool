@@ -6,6 +6,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ComplexPage } from '../pages/complex/complex';
 import { SimplePage } from '../pages/simple/simple';
 import { InterestService } from '../services/interest-service';
+//import { RecurringTransaction } from '../pages/simple/simple';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { InterestService } from '../services/interest-service';
     HomePage,
     TabsPage,
     ComplexPage,
-    SimplePage
+    SimplePage,
+    //RecurringTransaction
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,7 +26,8 @@ import { InterestService } from '../services/interest-service';
     HomePage,
     TabsPage,
     ComplexPage,
-    SimplePage
+    SimplePage,
+    //RecurringTransaction
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},InterestService]
 })

@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { InterestService } from '../../services/interest-service';
 
-/*
-  Generated class for the Complex page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-complex',
   templateUrl: 'complex.html'
@@ -29,7 +23,7 @@ complexInterest:any;
     console.log('ionViewDidLoad ComplexPage');
   }
 
-     doAlert() {
+  doAlert() {
     let alert = this.alertCtrl.create({
       title: 'Interest Calculated',
       message: 'We calculated an interest of 443493 pennies',
@@ -37,6 +31,7 @@ complexInterest:any;
     });
     alert.present()
   }
+
   getInterestValue(){
     if(this.complexInterest){
       this.interestType="COMPLEX";
@@ -46,6 +41,7 @@ complexInterest:any;
     console.log(this.accountID, this.interval, this.frequency, this.interestType, this.calculationRule.toUpperCase(), this.numDaysForRule);
     this.interestService.getInterestValue(this.accountID, this.interval, this.frequency, this.interestType, this.calculationRule.toUpperCase(), this.numDaysForRule);
   }
+
   updateInterestType(){
     this.interestType="COMPLEX";
     console.log(this.complexInterest);

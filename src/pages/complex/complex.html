@@ -10,49 +10,47 @@
   <ion-list>
 
     <ion-item>
-    <ion-label color="primary">Would you like to calculate complex interest?</ion-label>
-    <ion-toggle [(ngModel)]="complexInterest" (ionChange)="updateInterestType()" checked="false">  </ion-toggle>
-
+      <ion-label color="primary">Turn on Complex Interest</ion-label>
+      <ion-toggle [(ngModel)]="complexInterest" (ionChange)="updateInterestType()" checked="false">  </ion-toggle>
     </ion-item>
 
-  <ion-item>
-    <ion-label color="primary">Account ID</ion-label>
-    <ion-input type="text" [(ngModel)]="accountID" placeholder="1277421"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary">Account ID</ion-label>
+      <ion-input type="text" [(ngModel)]="accountID" placeholder="1277421"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label color="primary">Interval of calculation</ion-label>
+      <ion-input type="text" [(ngModel)]="interval" placeholder="365"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label color="primary">Interval of calculation</ion-label>
-    <ion-input type="text" [(ngModel)]="interval" placeholder="365"></ion-input>
-   </ion-item>
+    <ion-item *ngIf="complexInterest">
+      <ion-label color="primary">Compounding frequency?</ion-label>
+      <ion-input type="text" [(ngModel)]="frequency" placeholder="30"></ion-input>
+    </ion-item>
 
-     <ion-item *ngIf="complexInterest">
-    <ion-label color="primary">Compounding frequency?</ion-label>
-    <ion-input type="text" [(ngModel)]="frequency" placeholder="30"></ion-input>
-   </ion-item>
+    <ion-item>
+      <ion-label *ngIf="complexInterest" color="primary">Balance calculation rule?</ion-label>
+      <ion-select [(ngModel)]="calculationRule" *ngIf="complexInterest" placeholder="Time of credit">
+        <ion-option value="timeOfCredit">Time of credit</ion-option>
+        <ion-option value="exInterestDate">Ex-interest date</ion-option>
+        <ion-option value="average">Average</ion-option>
+        <ion-option value="maxBalance">Maximum balance</ion-option>
+        <ion-option value="minBalance">Minimum balance</ion-option>
+        <ion-option value="thresholdMax">Threshold maximum</ion-option>
+        <ion-option value="thresholdMin">Threshold minimum</ion-option>
+      </ion-select>
+    </ion-item>
 
-     <ion-item>
-    <ion-label *ngIf="complexInterest" color="primary">Balance calculation rule?</ion-label>
-    <ion-select [(ngModel)]="calculationRule" *ngIf="complexInterest" placeholder="Time of credit">
-      <ion-option value="timeOfCredit">Time of credit</ion-option>
-      <ion-option value="exInterestDate">Ex-interest date</ion-option>
-      <ion-option value="average">Average</ion-option>
-      <ion-option value="maxBalance">Maximum balance</ion-option>
-      <ion-option value="minBalance">Minimum balance</ion-option>
-      <ion-option value="thresholdMax">Threshold maximum</ion-option>
-      <ion-option value="thresholdMin">Threshold minimum</ion-option>
-    </ion-select>
-   </ion-item>
     <ion-item *ngIf="complexInterest">
       <ion-item *ngIf="calculationRule === 'thresholdMax' || calculationRule === 'thresholdMin'">
-     <ion-label *ngIf="complexInterest" color="primary">How many days?</ion-label>
-    <ion-input *ngIf="complexInterest" placeholder="4" [(ngModel)]="numDaysForRule"></ion-input>
-    </ion-item>
+        <ion-label *ngIf="complexInterest" color="primary">How many days?</ion-label>
+        <ion-input *ngIf="complexInterest" placeholder="4" [(ngModel)]="numDaysForRule"></ion-input>
+      </ion-item>
     </ion-item>
 
     </ion-list>
 
     <button ion-button color="blue" (click)="getInterestValue()">Submit</button>
-
 
 </ion-content>

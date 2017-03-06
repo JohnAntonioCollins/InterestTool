@@ -26,59 +26,55 @@
     <ion-input type="text" [(ngModel)]="balance" placeholder="500"></ion-input>
   </ion-item>
 
-    <ion-item>
+  <ion-item>
     <ion-label color="primary">Interest rate</ion-label>
     <ion-input type="text" [(ngModel)]="interestRate" placeholder="0.08"></ion-input>
-   </ion-item>
+  </ion-item>
 
-    <ion-item>
+  <ion-item>
     <ion-label color="primary">Overdraft penalty</ion-label>
     <ion-input type="text" [(ngModel)]="overDraftPenalty" placeholder="25"></ion-input>
-   </ion-item>
+  </ion-item>
 
-    <!--
-    <ion-item>
-    <ion-label color="primary">Interval of calculation</ion-label>
-    <ion-input placeholder="365"></ion-input>
-    </ion-item>
-    -->
     </ion-list>
     <ion-list>
 
-    <ion-item>
+  <ion-item>
     <ion-label color="primary">Minimum balance required?</ion-label>
-    <ion-toggle [(ngModel)]="isMinimumBalanceRequired" (ionChange)="updateIsMinimumBalanceRequired()"
- checked="true"></ion-toggle>
+      <ion-toggle [(ngModel)]="isMinimumBalanceRequired" (ionChange)="updateIsMinimumBalanceRequired()" checked="true"></ion-toggle>
     </ion-item>
 
-    <ion-item *ngIf="isMinimumBalanceRequired">
+  <ion-item *ngIf="isMinimumBalanceRequired">
     <ion-label color="primary">Minimum balance</ion-label>
     <ion-input type="text" [(ngModel)]="requiredMinimumBalance" placeholder="1000"></ion-input>
-    </ion-item>
+  </ion-item>
 
     </ion-list>
-     <ion-list>
+    <ion-list>
 
-    <ion-item>
+  <ion-item>
     <ion-label color="primary">Are there recurring transactions?</ion-label>
-    <ion-toggle [(ngModel)]="hasRecurringTransactions" (ionChange)="updateRecurringTransactions()"
- checked="true"></ion-toggle>
-    </ion-item>
+    <ion-toggle [(ngModel)]="hasRecurringTransactions" (ionChange)="updateRecurringTransactions()" checked="true"></ion-toggle>
+  </ion-item>
         
-    <!-- does middleware need this info? it's not in their spec' -->
-    <ion-item *ngIf="hasRecurringTransactions">
+    
+
+  <ion-item *ngIf="hasRecurringTransactions">
+    <ion-label color="primary">Transaction amount</ion-label>
+    <ion-input type="text" [(ngModel)]="recurringTransactionAmount" placeholder="2000"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="hasRecurringTransactions">
     <ion-label color="primary">Transaction frequency</ion-label>
-    <ion-input type="text" [(ngModel)]="transactionFrequency" placeholder="365"></ion-input>
+    <ion-input type="text" [(ngModel)]="recurringTransactionFrequency" placeholder="number of days"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="hasRecurringTransactions">
+          <button ion-button color="blue" (click)="addRecurringTransaction()">Add transaction</button>
     </ion-item>
     
-    <!-- does middleware need this info? what's middleware's term for this? -->
-    <ion-item *ngIf="hasRecurringTransactions">
-    <ion-label color="primary">Transaction amount</ion-label>
-    <ion-input type="text" placeholder="2000"></ion-input>
-    </ion-item>
-
     </ion-list>
-     <ion-list>
+    <ion-list>
 
     <ion-item>
     <ion-label color="primary"> Want to upload account history?</ion-label>
@@ -86,30 +82,19 @@
  checked="true">"hasAccountHistory"</ion-toggle>
     </ion-item>
 
-  <!-- THIS IS PART OF INTEREST TOOL
-  <ion-item>
-    <ion-label *ngIf="hasAccountHistory" color="primary">Balance calculation rule?</ion-label>
-    <ion-select [(ngModel)]="method" *ngIf="accountHistoryExists" placeholder="Time of credit">
-      <ion-option value="timeOfCredit">Time of credit</ion-option>
-      <ion-option value="exInterestDate">Ex-interest date</ion-option>
-      <ion-option value="average">Average</ion-option>
-      <ion-option value="maxBalance">Maximum balance</ion-option>
-      <ion-option value="minBalance">Minimum balance</ion-option>
-      <ion-option value="thresholdMax">Threshold maximum</ion-option>
-      <ion-option value="thresholdMin">Threshold minimum</ion-option>
-    </ion-select>
-   </ion-item>
-   -->
 
     <ion-item *ngIf="hasAccountHistory">
     <ion-label color="primary">Amount</ion-label>
-    <ion-input placeholder="2000"></ion-input>
+    <ion-input [(ngModel)]="historicTransactionAmount" placeholder="2000"></ion-input>
     </ion-item>
 
    <ion-item *ngIf="hasAccountHistory">
    <ion-label color="primary">Date</ion-label>
-   <ion-datetime displayFormat="MM/DD/YYYY" placeholder="11/19/1993"></ion-datetime>
+   <ion-datetime [(ngModel)]="historicTransactionDate" displayFormat="MM/DD/YYYY" placeholder="11/19/1993"></ion-datetime>
    </ion-item>
+   <ion-item *ngIf="hasAccountHistory">
+          <button ion-button color="blue" (click)="addHistoricTransaction()">Add transaction</button>
+    </ion-item>
 
           <ion-item *ngIf="hasAccountHistory">
        <ion-item *ngIf="method === 'thresholdMax' || method === 'thresholdMin'">

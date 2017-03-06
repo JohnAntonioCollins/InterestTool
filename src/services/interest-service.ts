@@ -13,14 +13,14 @@ export class InterestService {
     constructor(private http: Http) {}
 
     postAccount(balance: number, accountType: string, interestRate:number, overDraftPenalty:number,
-    requiredMinimumBalance:number, isMinimumBalanceRequired:boolean, recurringTransactions:[any], accountHistory:[any]){
+    requiredMinimumBalance:number,  recurringTransactions:any[], accountHistory:any[]){
         this.data = {
             "balance": balance,
             "accountType": accountType,
             "interestRate": interestRate,
             "overDraftPenalty": overDraftPenalty,
             "requiredMinimumBalance": requiredMinimumBalance,
-            "isMinimumBalanceRequired": isMinimumBalanceRequired,
+            //"isMinimumBalanceRequired": isMinimumBalanceRequired, //isMinimumBalanceRequired:boolean,
             "recurringTransactions": recurringTransactions,
             "accountHistory": accountHistory
         };
